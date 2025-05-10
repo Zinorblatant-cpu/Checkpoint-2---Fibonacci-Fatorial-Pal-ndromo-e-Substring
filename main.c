@@ -43,6 +43,34 @@ void SequenciaDeFibonacci() {
     return;
 }
  
+void Fatoriais() {
+    int num;
+    int vetor[21];  // índice vai até 20, então precisa de espaço suficiente
+    int i;
+    vetor[0] = 1;
+ 
+    printf("2 - Fatoriais;\n");
+    printf("Digite um número entre 1 a 20: \n");
+ 
+    scanf("%d", &num);
+ 
+    if (num < 1 || num > 20) {
+        printf("Erro, Digite um numero entre 1 e 20.\n");
+        return;
+    }
+ 
+    for (i = 1; i <= num; ++i){
+        vetor[i] = vetor[i - 1] * i;
+    }
+ 
+    printf("Fatoriais: \n");
+    for (i = 1; i <= num; ++i){
+        printf("%d! = %d\n", i, vetor[i]);
+    }
+ 
+    printf("\n");
+}
+
 
  
 int menu() {
