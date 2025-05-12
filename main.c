@@ -43,7 +43,100 @@ void SequenciaDeFibonacci() {
     return;
 }
  
+void Fatoriais() {
+    int num;
+    int vetor[21];  // índice vai até 20, então precisa de espaço suficiente
+    int i;
+    vetor[0] = 1;
+ 
+    printf("2 - Fatoriais;\n");
+    printf("Digite um número entre 1 a 20: \n");
+ 
+    scanf("%d", &num);
+ 
+    if (num < 1 || num > 20) {
+        printf("Erro, Digite um numero entre 1 e 20.\n");
+        return;
+    }
+ 
+    for (i = 1; i <= num; ++i){
+        vetor[i] = vetor[i - 1] * i;
+    }
+ 
+    printf("Fatoriais: \n");
+    for (i = 1; i <= num; ++i){
+        printf("%d! = %d\n", i, vetor[i]);
+    }
+ 
+    printf("\n");
+}
 
+void VerificarPalindromo() {
+    char texto[80], texto_invertido[80];
+    int i, j, fim;
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+ 
+    printf("3 - Verificar Palíndromo;\n");
+    printf("Insira uma palavra: ");
+    fgets(texto, 80, stdin);
+    texto[strcspn(texto, "\n")] = '\0'; // remove o \n da entrada
+ 
+    fim = strlen(texto); // calcula o tamanho real da string
+ 
+    i = fim - 1;
+    j = 0;
+    while (j < fim) {
+        texto_invertido[j] = texto[i];
+        i--;
+        j++;
+    }
+ 
+    texto_invertido[fim] = '\0'; // finaliza string invertida
+    printf("Inverso: %s\n", texto_invertido);
+    if (strcmp(texto, texto_invertido) == 0) {
+        printf("É um palíndromo!\n");
+    } else {
+        printf("Não é um palíndromo.\n");
+    }
+}
+ 
+void VerificarSubstring() {
+    printf("4 - Verificar Substring.\n");
+    char primeira_string[100];
+    char segunda_string[100];
+    int i;
+    int j;
+    int string_encontrada = 0;
+ 
+    printf("Digite a palavra da primeira string: ");
+    getchar();
+    fgets(primeira_string, sizeof(primeira_string), stdin);
+ 
+    printf("Digite a palavra da segunda string: ");
+    fgets(segunda_string, sizeof(segunda_string), stdin);
+ 
+    primeira_string [strcspn(primeira_string, "\n")] = '\0';
+    segunda_string [strcspn(segunda_string, "\n")] = '\0';
+ 
+    for (i = 0; primeira_string[i] != '\0'; i++){
+        j = 0;
+        while (segunda_string[j] != 0 && primeira_string[i + j] == segunda_string[j]){
+            j++;
+        }
+        if (segunda_string[j] == '\0'){
+            string_encontrada = 1;
+            break;
+        }
+    }
+    if (string_encontrada){
+        printf("A Segunda string esta contida na primeira.\n");
+    }else{
+        printf("\nA Segunda string Nao esta contida na primeira.\n");
+    }
+ 
+    return;
+}
  
 int menu() {
     int x;
@@ -84,3 +177,9 @@ int main() {
     return 0;
  
 }
+
+// Felipe Krzyzanovski - RM564878
+//Gabriel Hiro - RM562221
+//Giovanni De Lela - RM563066
+//Leonardo Lopes - RM565437
+//Murilo Godoy - RM564840
